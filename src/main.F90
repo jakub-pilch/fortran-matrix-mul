@@ -1,5 +1,5 @@
 program main
-    use bettermath
+    use dotmath
     implicit none
 
 
@@ -17,7 +17,7 @@ program main
         end do
     end do
 
-    C=bettmull(A,B)  
+    C=dotmull(A,B)  
     write(*,*) C
     write(*,*) size(C,dim=1)
     write(*,*) size(C,dim=2)
