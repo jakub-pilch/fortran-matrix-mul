@@ -1,0 +1,71 @@
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /usr/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+1
+ifort version 19.0
+fpp    -D__INTEL_COMPILER=1900 -D__INTEL_COMPILER_UPDATE=0 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__ELF__ -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20190206 -D__INTEL_OFFLOAD -D__i686 -D__i686__ -D__pentiumpro -D__pentiumpro__ -D__tune_i686__ -D__tune_pentiumpro__ -D__pentium4 -D__pentium4__ -D__tune_pentium4__ -D__SSE2__ -D__SSE2_MATH__ -D__SSE__ -D__SSE_MATH__ -D__MMX__ -I. -I/usr/include -I/usr/local/include -I/usr/lib/gcc/x86_64-redhat-linux/8/include -I/usr/include/ -I/usr/include -fixed -4Ycpp -4Ncvf -f_com=yes -MX CMakeFortranCompilerId.F /tmp/iforthwYeRx.i
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /usr/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-redhat-linux/8/include
+ /usr/include/
+ /usr/include
+End of search list.
+fortcom    -D__INTEL_COMPILER=1900 -D__INTEL_COMPILER_UPDATE=0 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__ELF__ -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20190206 -D__INTEL_OFFLOAD -D__i686 -D__i686__ -D__pentiumpro -D__pentiumpro__ -D__tune_i686__ -D__tune_pentiumpro__ -D__pentium4 -D__pentium4__ -D__tune_pentium4__ -D__SSE2__ -D__SSE2_MATH__ -D__SSE__ -D__SSE_MATH__ -D__MMX__ -mGLOB_pack_sort_init_list -I. -I/usr/include -I/usr/local/include -I/usr/lib/gcc/x86_64-redhat-linux/8/include -I/usr/include/ -I/usr/include -omp_simd -O2 "-reentrancy threaded" -simd -offload_host -mGLOB_em64t=TRUE -mP1OPT_version=19.0-intel64 -mGLOB_diag_file=/tmp/ifortYpwCzB.diag -mGLOB_long_size_64 -mGLOB_routine_pointer_size_64 -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_gcc_version=831 -mGLOB_options_string=-v -mGLOB_cxx_limited_range=FALSE -mCG_extend_parms=FALSE -mGLOB_as_output_backup_file_name=/tmp/ifort76Q2rqas_.s -mGLOB_dashboard_use_source_name -mIPOPT_activate -mIPOPT_lite -mGLOB_uarch_tuning=0x0 -mGLOB_product_id_code=0x22006d91 -mCG_bnl_movbe=T -mGLOB_extended_instructions=0x8 -mP3OPT_use_mspp_call_convention -mP2OPT_subs_out_of_bound=FALSE -mP2OPT_disam_type_based_disam=2 -mGLOB_ansi_alias -mPGOPTI_value_profile_use=T -mGLOB_opt_report_use_source_name -mGLOB_offload_mode=1 -mP2OPT_offload_unique_var_string=ifort0594742233eAozsQ -mP2OPT_hlo_level=2 -mP2OPT_hlo -mP2OPT_hpo_rtt_control=0 -mIPOPT_args_in_regs=0 -mP2OPT_disam_assume_nonstd_intent_in=FALSE -mIPOPT_single_file_compile_and_link=TRUE -mPGOPTI_gen_threadsafe_level=0 -mIPOPT_lto_object_enabled -mIPOPT_lto_object_value=1 -mIPOPT_obj_output_file_name=/tmp/ifortYpwCzB.o -mIPOPT_whole_archive_fixup_file_name=/tmp/ifortwarchPnPC4i -mGLOB_linker_version=2.29.1 -mGLOB_linker=ld -mGLOB_driver_tempfile_name=/tmp/iforttempfile6G51nf -mP3OPT_asm_target=P3OPT_ASM_TARGET_GAS -mGLOB_async_unwind_tables=TRUE -mGLOB_obj_output_file=/tmp/ifortYpwCzB.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F -mP1OPT_full_source_file_name=/home/FizzyJelly/Fortran/project/CMakeFiles/3.11.2/CompilerIdFortran/CMakeFortranCompilerId.F -mP2OPT_symtab_type_copy=true /tmp/iforthwYeRx.i
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /usr/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-redhat-linux/8/include
+ /usr/include/
+ /usr/include
+End of search list.
+ld    /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/8/crtbegin.o --eh-frame-hdr --build-id -dynamic-linker /lib64/ld-linux-x86-64.so.2 -m elf_x86_64 -o a.out /usr/lib_lin/for_main.o -L/usr/lib_lin -L/usr/lib/gcc/x86_64-redhat-linux/8/ -L/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/ -L/lib/../lib64 -L/lib/../lib64/ -L/usr/lib/../lib64 -L/usr/lib/../lib64/ -L/usr/lib/gcc/x86_64-redhat-linux/8/../../../ -L/lib64 -L/lib/ -L/usr/lib64 -L/usr/lib /tmp/ifortYpwCzB.o -Bdynamic -Bstatic -lifport -lifcoremt -limf -lsvml -Bdynamic -lm -Bstatic -lipgo -lirc -Bdynamic -lpthread -Bstatic -lsvml -Bdynamic -lc -lgcc -lgcc_s -Bstatic -lirc_s -Bdynamic -ldl -lc /usr/lib/gcc/x86_64-redhat-linux/8/crtend.o /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/crtn.o
+ld: cannot find /usr/lib_lin/for_main.o: No such file or directory
+ld: cannot find -lifport
+ld: cannot find -lifcoremt
+ld: cannot find -limf
+ld: cannot find -lsvml
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /usr/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+ld: cannot find /usr/lib_lin/for_main.o: No such file or directory
+ld: cannot find -lifport
+ld: cannot find -lifcoremt
+ld: cannot find -limf
+ld: cannot find -lsvml
+
+
+Determining if the Fortran compiler works failed with the following output:
+Change Dir: /home/FizzyJelly/Fortran/project/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_0ac64/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_0ac64.dir/build.make CMakeFiles/cmTC_0ac64.dir/build
+gmake[1]: Entering directory '/home/FizzyJelly/Fortran/project/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_0ac64.dir/testFortranCompiler.f.o
+/usr/bin/ifort    -c /home/FizzyJelly/Fortran/project/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_0ac64.dir/testFortranCompiler.f.o
+Linking Fortran executable cmTC_0ac64
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0ac64.dir/link.txt --verbose=1
+/usr/bin/ifort      CMakeFiles/cmTC_0ac64.dir/testFortranCompiler.f.o  -o cmTC_0ac64 
+ld: cannot find /usr/lib_lin/for_main.o: No such file or directory
+ld: cannot find -lifport
+ld: cannot find -lifcoremt
+ld: cannot find -limf
+ld: cannot find -lsvml
+gmake[1]: *** [CMakeFiles/cmTC_0ac64.dir/build.make:87: cmTC_0ac64] Error 1
+gmake[1]: Leaving directory '/home/FizzyJelly/Fortran/project/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:126: cmTC_0ac64/fast] Error 2
+
+
