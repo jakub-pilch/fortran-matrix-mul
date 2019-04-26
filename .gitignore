@@ -1,3 +1,9 @@
+# cmake
+CMakeFiles
+*.cmake
+Makefile
+mull
+
 # Prerequisites
 *.d
 
