@@ -3,8 +3,6 @@ set terminal pdf
 set output 'wykres[4].pdf'
 set key box top left
 set multi
-set logscale x
-set logscale y
 set key opaque
 set key box
 set key width 1 height 0.5 font "Arial, 14”
@@ -19,3 +17,4 @@ set termoption dashed
 plot "naiv_4.txt"
 replot "bett_4.txt"
 replot "dot_4.txt"
+replot "matmul_4.txt"

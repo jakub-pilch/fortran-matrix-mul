@@ -12,25 +12,10 @@ program main
     real(kind=16), allocatable, dimension(:,:) :: E
     real(kind=16), allocatable, dimension(:,:) :: F
 
-    real(kind=8),dimension(3,2) :: G
-    real(kind=8),dimension(2,3) :: H
-    real(kind=8), allocatable,dimension(:,:) :: X
-
     integer, dimension(8) :: sizes
     integer :: i,j,k
 
     sizes=(/10,20,40,80,160,320,640,1280/)
-
-
-    do i=1,3
-        do j=1,2
-            G(i,j)=i
-            H(j,i)=j
-        end do
-    end do
-
-    X=dotmull(G,H)
-    write(*,*) X
 
 
     call open_result_files()
@@ -47,7 +32,7 @@ program main
             end do
         end do
 
-        call measure_times_4(A,B,10,11,12) ! file descriptors for those results
+        call measure_times_4(A,B,10,11,12,13) ! file descriptors for those results
 
         deallocate(A)
         deallocate(B)
@@ -62,7 +47,7 @@ program main
             end do
         end do
 
-        call measure_times_8(C,D,13,14,15) ! file descriptors for those results
+        call measure_times_8(C,D,14,15,16,17) ! file descriptors for those results
 
         deallocate(C)
         deallocate(D)
@@ -77,7 +62,7 @@ program main
             end do
         end do
 
-        call measure_times_16(E,F,16,17,18) ! file descriptors for those results
+        call measure_times_16(E,F,18,19,20,21) ! file descriptors for those results
 
         deallocate(E)
         deallocate(F)
@@ -93,12 +78,15 @@ program main
         open (unit=10, file="./res/naiv_4.txt",action="write", form="formatted", status="replace", access="stream")
         open (unit=11, file="./res/bett_4.txt",action="write", form="formatted", status="replace", access="stream")
         open (unit=12, file="./res/dot_4.txt",action="write", form="formatted", status="replace", access="stream")
-        open (unit=13, file="./res/naiv_8.txt",action="write", form="formatted", status="replace", access="stream")
-        open (unit=14, file="./res/bett_8.txt",action="write", form="formatted", status="replace", access="stream")
-        open (unit=15, file="./res/dot_8.txt",action="write", form="formatted", status="replace", access="stream")
-        open (unit=16, file="./res/naiv_16.txt",action="write", form="formatted", status="replace", access="stream")
-        open (unit=17, file="./res/bett_16.txt",action="write", form="formatted", status="replace", access="stream")
-        open (unit=18, file="./res/dot_16.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=13, file="./res/matmul_4.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=14, file="./res/naiv_8.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=15, file="./res/bett_8.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=16, file="./res/dot_8.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=17, file="./res/matmul_8.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=18, file="./res/naiv_16.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=19, file="./res/bett_16.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=20, file="./res/dot_16.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=21, file="./res/matmul_16.txt",action="write", form="formatted", status="replace", access="stream")
     end
 
     subroutine close_result_files()
@@ -111,16 +99,19 @@ program main
         close(16)
         close(17)
         close(18)
+        close(19)
+        close(20)
+        close(21)
     end    
 
-    subroutine measure_times_4(A, B, fd1 , fd2, fd3)
+    subroutine measure_times_4(A, B, fd1 , fd2, fd3, fd4)
         use naivemath
         use bettermath
         use dotmath
         implicit none
         real(kind=4), intent(in), dimension(:,:) :: A,B
         real(kind=4), dimension(:,:),allocatable :: C
-        integer, intent(in) :: fd1,fd2,fd3
+        integer, intent(in) :: fd1,fd2,fd3, fd4
         logical :: exists
 
         real(kind=4) :: start,finish
@@ -151,18 +142,27 @@ program main
         write(fd3,*) size(C,dim=1),finish-start
 
 
+        call cpu_time(start)
+        C=matmul(A,B)
+        call cpu_time(finish)
+        if(allocated(C)) deallocate(C)
+
+
+        write(fd4,*) size(C,dim=1),finish-start
+
+
 
     end subroutine
 
 
-    subroutine measure_times_8(A, B, fd1 , fd2, fd3)
+    subroutine measure_times_8(A, B, fd1 , fd2, fd3, fd4)
         use naivemath
         use bettermath
         use dotmath
         implicit none
         real(kind=8), intent(in), dimension(:,:) :: A,B
         real(kind=8), dimension(:,:),allocatable :: C
-        integer, intent(in) :: fd1,fd2,fd3
+        integer, intent(in) :: fd1,fd2,fd3,fd4
         logical :: exists
 
         real :: start,finish
@@ -191,20 +191,28 @@ program main
 
 
         write(fd3,*) size(C,dim=1),finish-start
+
+        call cpu_time(start)
+        C=matmul(A,B)
+        call cpu_time(finish)
+        if(allocated(C)) deallocate(C)
+
+
+        write(fd4,*) size(C,dim=1),finish-start
 
 
 
     end subroutine
 
 
-    subroutine measure_times_16(A, B, fd1 , fd2, fd3)
+    subroutine measure_times_16(A, B, fd1 , fd2, fd3, fd4)
         use naivemath
         use bettermath
         use dotmath
         implicit none
         real(kind=16), intent(in), dimension(:,:) :: A,B
         real(kind=16), dimension(:,:),allocatable :: C
-        integer, intent(in) :: fd1,fd2,fd3
+        integer, intent(in) :: fd1,fd2,fd3,fd4
         logical :: exists
 
         real :: start,finish
@@ -233,6 +241,14 @@ program main
 
 
         write(fd3,*) size(C,dim=1),finish-start
+
+        call cpu_time(start)
+        C=matmul(A,B)
+        call cpu_time(finish)
+        if(allocated(C)) deallocate(C)
+
+
+        write(fd4,*) size(C,dim=1),finish-start
 
     end subroutine
 

@@ -34,8 +34,8 @@ module dotmath
             end do
         end do
 
-        do j=1, size(B,dim=2)
-            do i=1, size(A,dim=1)
+        do i=1, size(A,dim=1)
+            do j=1, size(B,dim=2)
                 C(i,j)=dot_product(A(i,:),B(:,j))
             end do  
         end do
@@ -65,8 +65,8 @@ module dotmath
             end do
         end do
 
-        do j=1, size(B,dim=2)
-            do i=1, size(A,dim=1)
+        do i=1, size(A,dim=1)
+            do j=1, size(B,dim=2)
                 C(i,j)=dot_product(A(i,:),B(:,j))
             end do  
         end do
@@ -88,7 +88,7 @@ module dotmath
 
 
         ! initialize matrix
-
+        
         do i=1, size(C,dim=1)
             do j=1, size(C,dim=2)
                 C(i,j)=0
