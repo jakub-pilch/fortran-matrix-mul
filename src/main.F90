@@ -4,29 +4,52 @@ program main
 
     implicit none
 
-    real(kind=4),dimension(3,2) :: A
-    real(kind=4),dimension(2,3) :: B
-    real(kind=4),dimension(3,3) :: C
+    real(kind=4), allocatable, dimension(:,:) :: A
+    real(kind=4), allocatable, dimension(:,:) :: B
 
-    integer :: i,j
+    integer, dimension(8) :: sizes
+    integer :: i,j,k
 
-    do i=1,3
-        do j=1,2
-            A(i,j)=i
-            B(j,i)=j
+    sizes=(/10,20,40,80,160,320,640,1280/)
+
+
+    call open_result_files()
+    
+    ! create matrices of different size and measure time for them
+    do i=1, size(sizes)
+        allocate(A(sizes(i),sizes(i)))
+        allocate(B(sizes(i),sizes(i)))
+
+        do j=1, sizes(i)
+            do k=1, sizes(i)
+                A(j,k)=1
+                B(j,k)=1
+            end do
         end do
+
+        call measure_times_4(A,B,10,11,12) ! file descriptors for those results
+
+        deallocate(A)
+        deallocate(B)
     end do
 
-    open (unit=10, file="./res/naiv_4.txt",action="write", form="formatted", status="replace", access="stream")
-    open (unit=11, file="./res/bett_4.txt",action="write", form="formatted", status="replace", access="stream")
-    open (unit=12, file="./res/dot_4.txt",action="write", form="formatted", status="replace", access="stream")
-    call measure_times_4(A,B,10,11,12)
-    call measure_times_4(A,B,10,11,12)
-    close(10)
-    close(11)
-    close(12)
+    call close_result_files()
+
+
 
     contains 
+
+    subroutine open_result_files()
+        open (unit=10, file="./res/naiv_4.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=11, file="./res/bett_4.txt",action="write", form="formatted", status="replace", access="stream")
+        open (unit=12, file="./res/dot_4.txt",action="write", form="formatted", status="replace", access="stream")
+    end
+
+    subroutine close_result_files()
+        close(10)
+        close(11)
+        close(12)
+    end    
 
     subroutine measure_times_4(A, B, fd1 , fd2, fd3)
         use naivemath
@@ -54,7 +77,7 @@ program main
         if(allocated(C)) deallocate(C)
 
 
-        write(*,*) finish-start
+        write(fd2,*) size(C,dim=1),finish-start
 
 
         call cpu_time(start)
@@ -63,7 +86,7 @@ program main
         if(allocated(C)) deallocate(C)
 
 
-        write(*,*) finish-start
+        write(fd3,*) size(C,dim=1),finish-start
 
 
 
