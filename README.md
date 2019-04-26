@@ -38,7 +38,7 @@ Poniższe wykresy przedstawiają wyniki pomiarów dla poszczególnej precyzji ty
 Oczywiste uwagi co do wykresów:
 + wykorzystanie funkcji **dot_product** ewidentnie zwiększa czas wykonania niezależnie od precyzji
 + pozostałe metody prezentują nieznacznie różniące się rezultaty niezależnie od rozmiaru macierzy i precyzji
-W związku z tym, wyrażam wątpliwości czy wszystkie obliczenia zostały wykonane poprawnie. Jednocześnie nie jestem w stanie wskazać możliwego błędu.
+W związku z tym, wyrażam wątpliwości czy wszystkie obliczenia zostały wykonane poprawnie. Jednocześnie nie jestem w stanie wskazać możliwego błędu - poszczególne funkcje wydają się być zaimplementowane poprawnie.
 
 Dodatkowe wnioski:
-+wbudowana funkcja **matmul** zdaję się być najlepszym rozwiązaniem dla niewielkich rozmiarów macierzy
++ wbudowana funkcja **matmul** zdaję się być najlepszym rozwiązaniem dla niewielkich rozmiarów macierzy
