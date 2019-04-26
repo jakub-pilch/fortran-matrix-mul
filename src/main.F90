@@ -4,9 +4,9 @@ program main
 
 
 
-    real(kind=8),dimension(3,2) :: A
-    real(kind=8),dimension(2,3) :: B
-    real(kind=8),dimension(3,3) :: C
+    real(kind=16),dimension(3,2) :: A
+    real(kind=16),dimension(2,3) :: B
+    real(kind=16),dimension(3,3) :: C
 
     integer :: i,j
 
@@ -17,7 +17,7 @@ program main
         end do
     end do
 
-    C=mull(A,B)  
+    C=naivmull(A,B)  
     write(*,*) C
     write(*,*) size(C,dim=1)
     write(*,*) size(C,dim=2)

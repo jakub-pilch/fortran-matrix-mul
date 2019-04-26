@@ -2,11 +2,11 @@ module naivemath
 
     implicit none
 
-    public :: mull
+    public :: naivmull
 
     private :: mull_4, mull_8, mull_16
 
-    interface mull
+    interface naivmull
         procedure mull_4, mull_8, mull_16
     end interface
 
@@ -23,6 +23,14 @@ module naivemath
         end if
 
         allocate(C(size(A,dim=1),size(B,dim=2)))
+
+        ! initialize matrix
+
+        do i=1, size(C,dim=1)
+            do j=1, size(C,dim=2)
+                C(i,j)=0
+            end do
+        end do
 
         do i=1, size(A,dim=1)
             do j=1, size(B,dim=2)
@@ -46,10 +54,18 @@ module naivemath
 
         allocate(C(size(A,dim=1),size(B,dim=2)))
 
+        ! initialize matrix
+
+        do i=1, size(C,dim=1)
+            do j=1, size(C,dim=2)
+                C(i,j)=0
+            end do
+        end do
+
         do i=1, size(A,dim=1)
             do j=1, size(B,dim=2)
                 do k=1,size(A,dim=2)
-                    C(i,j) = C(i,j) + A(i,k)*B(i,k)
+                    C(i,j) = C(i,j) + A(i,k)*B(k,j)
                 end do
             end do
         end do
@@ -67,15 +83,24 @@ module naivemath
         end if
 
         allocate(C(size(A,dim=1),size(B,dim=2)))
+        
+        ! initialize matrix
+
+        do i=1, size(C,dim=1)
+            do j=1, size(C,dim=2)
+                C(i,j)=0
+            end do
+        end do
 
         do i=1, size(A,dim=1)
             do j=1, size(B,dim=2)
                 do k=1,size(A,dim=2)
-                    C(i,j) = C(i,j) + A(i,k)*B(i,k)
+                    C(i,j) = C(i,j) + A(i,k)*B(k,j)
                 end do
             end do
         end do
         
     end function
+
 
 end module
