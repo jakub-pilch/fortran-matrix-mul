@@ -42,3 +42,4 @@ W związku z tym, wyrażam wątpliwości czy wszystkie obliczenia zostały wykon
 
 Dodatkowe wnioski:
 + wbudowana funkcja **matmul** zdaję się być najlepszym rozwiązaniem dla niewielkich rozmiarów macierzy
++ dla **kind = 8** i rozmiarów macierz mniejszych niż 100, widoczna jest w przybliżeniu oczekiwana zależność pomiędzy czasem wykonania poszczególnych metod
