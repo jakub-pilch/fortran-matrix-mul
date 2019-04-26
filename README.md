@@ -1,15 +1,19 @@
 # Fortran - Mnożenie Macierzy
 ## Autor: Jakub Pilch
 ---
-**1. Wstęp**
+##**1. Wstęp**
 
 Tematem projektu była implementacja oraz przetestowanie różnych metod mnożenia macierzy. W języku Fortran zostały zaimplementowane trzy metody:
-+ naiwna
-+ ulepszona - wykorzystująca ułożenie danych w pamięci
-+ z iloczynem skalarnym - wbudowana funkcja dot_product
++ **naiwna**
++ **ulepszona** - wykorzystująca ułożenie danych w pamięci
++ **z iloczynem skalarnym** - wbudowana funkcja dot_product
 Dodatkowo do porównania wzięto też pod uwagę wbudowaną funkcję Fortrana matmul(A,B).
+
+Plik **main.F90** zawiera program testowy.
+
+Uwaga techniczna: należy zatroszczyć się o odpowiednią wielkość stosu dla testów na większych rozmiarach macierzy.
 ---
-**2. Testowane konfiguracje**
+##**2. Testowane konfiguracje**
 
 Zmierzono czas wykonania każdej z metod dla:
 + typów real o precyzji: **4, 8, 16**
@@ -17,13 +21,23 @@ Zmierzono czas wykonania każdej z metod dla:
     
 ---
 
-**3. Wyniki pomiarów**
+##**3. Wyniki pomiarów**
 
 Poniższe wykresy przedstawiają wyniki pomiarów dla poszczególnej precyzji typu real:
 
-**Kind = 4**
+###**Kind = 4**
 ![](res/wykres[4].jpeg)
-**Kind = 8**
+###**Kind = 8**
 ![](res/wykres[8].jpeg)
-**Kind = 16**
+###**Kind = 16**
 ![](res/wykres[16].jpeg)
+
+##**4. Uwagi i wnioski**
+
+Oczywiste uwagi co do wykresów:
++ wykorzystanie funkcji **dot_product** ewidentnie zwiększa czas wykonania niezależnie od precyzji
++ pozostałe metody prezentują nieznacznie różniące się rezultaty niezależnie od rozmiaru macierzy i precyzji
+W związku z tym, wyrażam wątpliwości czy wszystkie obliczenia zostały wykonane poprawnie. Jednocześnie nie jestem w stanie wskazać możliwego błędu.
+
+Dodatkowe wnioski:
++wbudowana funkcja **matmul** zdaję się być najlepszym rozwiązaniem dla niewielkich rozmiarów macierzy
