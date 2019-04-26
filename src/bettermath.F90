@@ -25,6 +25,24 @@ module bettermath
 
         allocate(C(size(A,dim=1),size(B,dim=2)))
 
+
+        ! initialize matrix
+
+        do i=1, size(C,dim=1)
+            do j=1, size(C,dim=2)
+                C(i,j)=0
+            end do
+        end do
+
+        do j=1,size(B,dim=2)
+            do k=1, size(A,dim=2)
+                do i=1,size(A,dim=1)
+                    C(i,j)=C(i,j) + A(i,k)*B(k,j)
+                end do
+            end do
+        end do
+
+
         
     end function
 
@@ -40,6 +58,23 @@ module bettermath
 
         allocate(C(size(A,dim=1),size(B,dim=2)))
 
+
+        ! initialize matrix
+
+        do i=1, size(C,dim=1)
+            do j=1, size(C,dim=2)
+                C(i,j)=0
+            end do
+        end do
+
+        do j=1,size(B,dim=2)
+            do k=1, size(A,dim=2)
+                do i=1,size(A,dim=1)
+                    C(i,j)=C(i,j) + A(i,k)*B(k,j)
+                end do
+            end do
+        end do
+
         
     end function
 
@@ -54,6 +89,23 @@ module bettermath
         end if
 
         allocate(C(size(A,dim=1),size(B,dim=2)))
+
+
+        ! initialize matrix
+
+        do i=1, size(C,dim=1)
+            do j=1, size(C,dim=2)
+                C(i,j)=0
+            end do
+        end do
+
+        do j=1,size(B,dim=2)
+            do k=1, size(A,dim=2)
+                do i=1,size(A,dim=1)
+                    C(i,j)=C(i,j) + A(i,k)*B(k,j)
+                end do
+            end do
+        end do
 
         
     end function

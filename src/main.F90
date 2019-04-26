@@ -1,5 +1,5 @@
 program main
-    use naivemath
+    use bettermath
     implicit none
 
 
@@ -17,7 +17,7 @@ program main
         end do
     end do
 
-    C=naivmull(A,B)  
+    C=bettmull(A,B)  
     write(*,*) C
     write(*,*) size(C,dim=1)
     write(*,*) size(C,dim=2)
