@@ -1,5 +1,6 @@
 program main
 
+    use dotmath
     ! program is a set of testing functions
 
     implicit none
@@ -11,10 +12,25 @@ program main
     real(kind=16), allocatable, dimension(:,:) :: E
     real(kind=16), allocatable, dimension(:,:) :: F
 
+    real(kind=8),dimension(3,2) :: G
+    real(kind=8),dimension(2,3) :: H
+    real(kind=8), allocatable,dimension(:,:) :: X
+
     integer, dimension(8) :: sizes
     integer :: i,j,k
 
     sizes=(/10,20,40,80,160,320,640,1280/)
+
+
+    do i=1,3
+        do j=1,2
+            G(i,j)=i
+            H(j,i)=j
+        end do
+    end do
+
+    X=dotmull(G,H)
+    write(*,*) X
 
 
     call open_result_files()
@@ -107,7 +123,7 @@ program main
         integer, intent(in) :: fd1,fd2,fd3
         logical :: exists
 
-        real :: start,finish
+        real(kind=4) :: start,finish
 
         call cpu_time(start)
         C=naivmull(A,B)
@@ -217,8 +233,6 @@ program main
 
 
         write(fd3,*) size(C,dim=1),finish-start
-
-
 
     end subroutine
 
