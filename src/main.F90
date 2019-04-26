@@ -17,17 +17,26 @@ program main
         end do
     end do
 
-    call measure_times_4(A,B)
+    open (unit=10, file="./res/naiv_4.txt",action="write", form="formatted", status="replace", access="stream")
+    open (unit=11, file="./res/bett_4.txt",action="write", form="formatted", status="replace", access="stream")
+    open (unit=12, file="./res/dot_4.txt",action="write", form="formatted", status="replace", access="stream")
+    call measure_times_4(A,B,10,11,12)
+    call measure_times_4(A,B,10,11,12)
+    close(10)
+    close(11)
+    close(12)
 
     contains 
 
-    subroutine measure_times_4(A,B)
+    subroutine measure_times_4(A, B, fd1 , fd2, fd3)
         use naivemath
         use bettermath
         use dotmath
         implicit none
         real(kind=4), intent(in), dimension(:,:) :: A,B
         real(kind=4), dimension(:,:),allocatable :: C
+        integer, intent(in) :: fd1,fd2,fd3
+        logical :: exists
 
         real :: start,finish
 
@@ -35,9 +44,8 @@ program main
         C=naivmull(A,B)
         call cpu_time(finish)
         if(allocated(C)) deallocate(C)
-
-
-        write(*,*) finish-start
+        
+        write(fd1,*) size(C,dim=1),finish-start
 
 
         call cpu_time(start)
