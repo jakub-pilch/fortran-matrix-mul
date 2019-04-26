@@ -1,12 +1,12 @@
 program main
-    use dotmath
+
+    ! program is a set of testing functions
+
     implicit none
 
-
-
-    real(kind=16),dimension(3,2) :: A
-    real(kind=16),dimension(2,3) :: B
-    real(kind=16),dimension(3,3) :: C
+    real(kind=4),dimension(3,2) :: A
+    real(kind=4),dimension(2,3) :: B
+    real(kind=4),dimension(3,3) :: C
 
     integer :: i,j
 
@@ -17,10 +17,50 @@ program main
         end do
     end do
 
-    C=dotmull(A,B)  
-    write(*,*) C
-    write(*,*) size(C,dim=1)
-    write(*,*) size(C,dim=2)
+    call measure_times_4(A,B)
+
+    contains 
+
+    subroutine measure_times_4(A,B)
+        use naivemath
+        use bettermath
+        use dotmath
+        implicit none
+        real(kind=4), intent(in), dimension(:,:) :: A,B
+        real(kind=4), dimension(:,:),allocatable :: C
+
+        real :: start,finish
+
+        call cpu_time(start)
+        C=naivmull(A,B)
+        call cpu_time(finish)
+        if(allocated(C)) deallocate(C)
+
+
+        write(*,*) finish-start
+
+
+        call cpu_time(start)
+        C=bettmull(A,B)
+        call cpu_time(finish)
+        if(allocated(C)) deallocate(C)
+
+
+        write(*,*) finish-start
+
+
+        call cpu_time(start)
+        C=dotmull(A,B)
+        call cpu_time(finish)
+        if(allocated(C)) deallocate(C)
+
+
+        write(*,*) finish-start
+
+
+
+    end subroutine
+
 
 
 end program main
